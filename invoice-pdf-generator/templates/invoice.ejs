@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <style>
+        :root {
+            --primary-color: #0099FF;
+            --secondary-bg: #EFF7FF;
+            --border-color: #ddd;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px 60px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header img {
+            width: 200px;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .invoice-details {
+            margin-bottom: 30px;
+        }
+
+        .personal-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        h3 {
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: var(--secondary-bg);
+        }
+
+        .table-total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: var(--secondary-bg);
+            padding: 10px;
+        }
+
+        hr {
+            background-color: var(--border-color);
+            height: 1px;
+            border: none;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .personal-details {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="invoice-container">
+    <div class="header">
+        <h1>Invoice</h1>
+        <img src="<%= logoUrl %>" alt="Logo">
+    </div>
+
+    <div class="invoice-details">
+        <p><strong>Invoice Number:</strong> <%= invoiceNumber %></p>
+        <p><strong>Date:</strong> <%= issueDate %></p>
+        <p><strong>Due Date:</strong> <%= dueDate %></p>
+    </div>
+    <hr>
+    <div class="personal-details">
+        <div>
+            <h3>Customer Details:</h3>
+            <p><strong>Name:</strong> <%= customerName %></p>
+            <p><strong>Address:</strong> <%= customerAddress %></p>
+        </div>
+        <div>
+            <h3>Seller Details:</h3>
+            <p><strong>Company Name:</strong> <%= sellerName %></p>
+            <p><strong>Address:</strong> <%= sellerAddress %></p>
+        </div>
+    </div>
+    <hr>
+    <h3>Order Summary:</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% items.forEach(item => { %>
+        <tr>
+            <td><%= item.description %></td>
+            <td><%= item.quantity %></td>
+            <td><%= item.price %></td>
+            <td><%= item.total %></td>
+        </tr>
+        <% }); %>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td class="table-total" colspan="4">Total Amount: <%= total %></td>
+        </tr>
+        </tfoot>
+    </table>
+    <footer class="footer">
+        <p>Thank you for your business!</p>
+        <p>If you have any questions, feel free to contact us at <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>.</p>
+    </footer>
+</div>
+</body>
+</html>

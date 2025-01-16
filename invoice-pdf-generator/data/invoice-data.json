@@ -1,0 +1,50 @@
+{
+  "invoiceNumber": "IT-777",
+  "issueDate": "2025-02-01",
+  "dueDate": "2025-02-15",
+  "customerName": "John Null",
+  "customerAddress": "127.0.0.1, Localhost",
+  "sellerName": "PDFBolt",
+  "sellerAddress": "123 Software Street, Tech City",
+  "contactEmail": "contact@pdfbolt.com",
+  "logoUrl": "https://img.pdfbolt.com/logo.png",
+  "items": [
+    {
+      "description": "Coffee Subscription for Developers",
+      "quantity": 12,
+      "price": "$20",
+      "total": "$240"
+    },
+    {
+      "description": "Developer Snack Pack",
+      "quantity": 3,
+      "price": "$50",
+      "total": "$150"
+    },
+    {
+      "description": "Keyboard with Self-Cleaning Keys",
+      "quantity": 1,
+      "price": "$250",
+      "total": "$250"
+    },
+    {
+      "description": "Fixing Legacy Code",
+      "quantity": 5,
+      "price": "$500",
+      "total": "$2,500"
+    },
+    {
+      "description": "Emergency Weekend Hotfix",
+      "quantity": 1,
+      "price": "$1,200",
+      "total": "$1,200"
+    },
+    {
+      "description": "Rubber Duck Debugging Assistant",
+      "quantity": 1,
+      "price": "$25",
+      "total": "$25"
+    }
+  ],
+  "total": "$4,365"
+}
