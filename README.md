@@ -18,6 +18,8 @@ Each example is designed to be ready-to-use — just clone the repository, follo
     <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 Badge">
 </div>
 
+ <br />
+ 
 - The **Invoice PDF Generator** demonstrates how to create a professional, dynamic invoice PDF using **Node.js**, **EJS templates** (HTML with placeholders for dynamic content), and the **PDFBolt API**. 
 - This approach allows you to seamlessly transform HTML templates into polished PDFs filled with custom data.
 
