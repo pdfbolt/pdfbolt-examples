@@ -16,10 +16,10 @@ const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API key
         const templatePath = path.join(__dirname, 'templates', 'invoice.ejs');
         const html = await ejs.renderFile(templatePath, invoiceData);
 
-        // Encode HTML to Base64
+        // Encode HTML to Base64 (required by PDFBolt API)
         const htmlBase64 = Buffer.from(html).toString('base64');
 
-        // Generate timestamped filename
+// Generate timestamped filename for the PDF
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
 
         // Send request to PDFBolt API
@@ -27,13 +27,14 @@ const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API key
             API_URL,
             {
                 html: htmlBase64,
-                printBackground: true
-                // Additional parameters can be added here
+                printBackground: true,
+                format: 'A4'
+                // Add more parameters as needed from PDFBolt API documentation
             },
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'API_KEY': API_KEY // Pass your API_KEY here
+                    'API_KEY': API_KEY
                 },
                 responseType: 'arraybuffer' // Receive binary PDF data
             }
@@ -48,12 +49,12 @@ const API_KEY = 'YOUR_API_KEY'; // Replace with your actual API key
         const responseData = error.response?.data;
         if (responseData) {
             try {
-                // Attempt to parse the buffer as JSON to extract detailed error information
+                // Try to parse the error as JSON to extract detailed error information
                 const errorDetails = JSON.parse(responseData.toString('utf8'));
-                console.error('Error generating PDF:', errorDetails);
+                console.error('API Error Details:', errorDetails);
             } catch (parseError) {
-                // If it's not JSON, log it as-is
-                console.error('Error generating PDF (raw response):', responseData.toString('utf8'));
+                // If not JSON, log as text
+                console.error('API Error Response:', responseData.toString('utf8'));
             }
         } else {
             // If no response data is available, log the error message

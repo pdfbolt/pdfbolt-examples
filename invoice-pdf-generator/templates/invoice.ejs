@@ -6,139 +6,213 @@
     <title>Invoice</title>
     <style>
         :root {
-            --primary-color: #0099FF;
-            --secondary-bg: #EFF7FF;
-            --border-color: #ddd;
-            --text-color: #333;
+            --brand-color: #0C8AE5;
+            --bg-light-brand-color: #e4f3ff;
+            --bg-light: #f8f9fa;
+            --text-dark: #333333;
+            --text-medium: #555555;
+            --border: #e0e0e0;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        .invoice-container {
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--text-dark);
+            padding: 20px;
+        }
+
+        .invoice {
             max-width: 800px;
-            margin: 40px auto;
-            padding: 30px 60px;
+            margin: 0 auto;
+            padding: 40px;
         }
 
         .header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1.5px solid var(--brand-color);
+            padding-bottom: 20px;
         }
 
-        .header img {
-            width: 200px;
+        .logo {
+            max-width: 200px;
+            height: auto;
         }
 
-        .header h1 {
-            font-size: 40px;
-            margin: 0;
-            color: var(--primary-color);
+        .invoice-title {
+            text-align: right;
         }
 
-        .invoice-details {
+        .invoice-title h1 {
+            color: var(--brand-color);
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .invoice-number {
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .dates {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--bg-light);
+            padding: 15px 25px;
+            border-radius: 5px;
             margin-bottom: 30px;
         }
 
-        .personal-details {
+        .date-group h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: var(--text-medium);
+        }
+
+        .addresses {
             display: flex;
             justify-content: space-between;
-            align-items: start;
+            margin-bottom: 30px;
+            gap: 20px;
         }
 
-        h3 {
-            color: #555;
+        .address {
+            flex: 1;
+            padding: 15px 25px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
         }
 
-        table {
+        .address h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--brand-color);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+        }
+
+        .items-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-bottom: 30px;
+            margin-top: 15px;
+            border: 1px solid var(--border);
         }
 
-        table th, table td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
+        .items-table th {
+            background-color: var(--brand-color);
+            color: white;
             text-align: left;
-        }
-
-        table th {
-            background-color: var(--secondary-bg);
-        }
-
-        .table-total {
-            text-align: right;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: var(--secondary-bg);
             padding: 10px;
         }
 
-        hr {
-            background-color: var(--border-color);
-            height: 1px;
-            border: none;
+        .items-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .items-table tr:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .total-row {
+            font-weight: bold;
+            background-color: var(--bg-light-brand-color);
+        }
+
+        .total-label {
+            text-align: right;
+        }
+
+        .total-amount {
+            font-size: 18px;
+            text-align: right;
         }
 
         .footer {
             margin-top: 30px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
             text-align: center;
+        }
+
+        .thank-you {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--brand-color);
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            color: var(--text-medium);
             font-size: 14px;
-            color: #666;
+        }
+
+        .contact a {
+            color: var(--brand-color);
+            text-decoration: none;
         }
 
         @media (max-width: 768px) {
-            .personal-details {
+            .header, .addresses {
                 flex-direction: column;
-                gap: 10px;
+            }
+
+            .invoice-title {
+                text-align: left;
+                margin-top: 15px;
+            }
+
+            .date-group {
+                margin-bottom: 10px;
             }
         }
-
-        @media (max-width: 600px) {
-            .header {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-
     </style>
 </head>
 <body>
-<div class="invoice-container">
+<div class="invoice">
     <div class="header">
-        <h1>Invoice</h1>
-        <img src="<%= logoUrl %>" alt="Logo">
+        <img class="logo" src="<%= logoUrl %>" alt="Company Logo">
+        <div class="invoice-title">
+            <h1>Invoice</h1>
+            <div class="invoice-number"><%= invoiceNumber %></div>
+        </div>
     </div>
 
-    <div class="invoice-details">
-        <p><strong>Invoice Number:</strong> <%= invoiceNumber %></p>
-        <p><strong>Date:</strong> <%= issueDate %></p>
-        <p><strong>Due Date:</strong> <%= dueDate %></p>
-    </div>
-    <hr>
-    <div class="personal-details">
-        <div>
-            <h3>Customer Details:</h3>
-            <p><strong>Name:</strong> <%= customerName %></p>
-            <p><strong>Address:</strong> <%= customerAddress %></p>
+    <div class="dates">
+        <div class="date-group">
+            <h3>Issue Date</h3>
+            <div><%= issueDate %></div>
         </div>
-        <div>
-            <h3>Seller Details:</h3>
-            <p><strong>Company Name:</strong> <%= sellerName %></p>
-            <p><strong>Address:</strong> <%= sellerAddress %></p>
+        <div class="date-group">
+            <h3>Due Date</h3>
+            <div><%= dueDate %></div>
         </div>
     </div>
-    <hr>
-    <h3>Order Summary:</h3>
-    <table>
+
+    <div class="addresses">
+        <div class="address">
+            <h3>Billed To</h3>
+            <div><strong><%= customerName %></strong></div>
+            <div><%= customerAddress %></div>
+        </div>
+        <div class="address">
+            <h3>From</h3>
+            <div><strong><%= sellerName %></strong></div>
+            <div><%= sellerAddress %></div>
+        </div>
+    </div>
+
+    <h3>Order Summary</h3>
+    <table class="items-table">
         <thead>
         <tr>
             <th>Description</th>
@@ -149,24 +223,26 @@
         </thead>
         <tbody>
         <% items.forEach(item => { %>
-        <tr>
-            <td><%= item.description %></td>
-            <td><%= item.quantity %></td>
-            <td><%= item.price %></td>
-            <td><%= item.total %></td>
-        </tr>
+            <tr>
+                <td class="item-description"><%= item.description %></td>
+                <td class="item-quantity"><%= item.quantity %></td>
+                <td class="item-price"><%= item.price %></td>
+                <td class="item-total"><%= item.total %></td>
+            </tr>
         <% }); %>
         </tbody>
         <tfoot>
-        <tr>
-            <td class="table-total" colspan="4">Total Amount: <%= total %></td>
+        <tr class="total-row">
+            <td colspan="3" class="total-label">Total Amount:</td>
+            <td class="total-amount"><%= total %></td>
         </tr>
         </tfoot>
     </table>
-    <footer class="footer">
-        <p>Thank you for your business!</p>
-        <p>If you have any questions, feel free to contact us at <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a>.</p>
-    </footer>
+
+    <div class="footer">
+        <p class="thank-you">Thank you for your business!</p>
+        <p class="contact">If you have any questions, please contact us at <a href="mailto:<%= contactEmail %>"><%= contactEmail %></a></p>
+    </div>
 </div>
 </body>
 </html>

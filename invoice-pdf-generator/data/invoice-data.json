@@ -1,50 +1,44 @@
 {
-  "invoiceNumber": "IT-777",
-  "issueDate": "2025-02-01",
-  "dueDate": "2025-02-15",
+  "invoiceNumber": "INV-2025-0327",
+  "issueDate": "2025-03-27",
+  "dueDate": "2025-04-10",
   "customerName": "John Null",
-  "customerAddress": "127.0.0.1, Localhost",
+  "customerAddress": "127.0.0.1, Localhost, Web City",
   "sellerName": "PDFBolt",
-  "sellerAddress": "123 Software Street, Tech City",
+  "sellerAddress": "123 Software Street, Tech Valley",
   "contactEmail": "contact@pdfbolt.com",
   "logoUrl": "https://img.pdfbolt.com/logo.png",
   "items": [
     {
-      "description": "Coffee Subscription for Developers",
+      "description": "Premium API Subscription",
       "quantity": 12,
       "price": "$20",
       "total": "$240"
     },
     {
-      "description": "Developer Snack Pack",
+      "description": "Developer Integration Package",
       "quantity": 3,
       "price": "$50",
       "total": "$150"
     },
     {
-      "description": "Keyboard with Self-Cleaning Keys",
+      "description": "Custom Template Design",
       "quantity": 1,
       "price": "$250",
       "total": "$250"
     },
     {
-      "description": "Fixing Legacy Code",
+      "description": "Legacy System Integration",
       "quantity": 5,
       "price": "$500",
       "total": "$2,500"
     },
     {
-      "description": "Emergency Weekend Hotfix",
+      "description": "PDF Analytics Service",
       "quantity": 1,
-      "price": "$1,200",
-      "total": "$1,200"
-    },
-    {
-      "description": "Rubber Duck Debugging Assistant",
-      "quantity": 1,
-      "price": "$25",
-      "total": "$25"
+      "price": "$350",
+      "total": "$350"
     }
   ],
-  "total": "$4,365"
+  "total": "$3,490"
 }
