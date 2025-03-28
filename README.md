@@ -41,7 +41,7 @@ pdfbolt-examples/
 
 Here’s a preview of the invoice PDF you’ll generate:
 
-<img src="https://img.pdfbolt.com/invoice-example.png" width="600px" alt="Invoice example generated using PDFBolt API">
+<img src="https://img.pdfbolt.com/invoice-pdf-generated-using-pdfbolt.png" width="600px" alt="Invoice example generated using PDFBolt API">
 
 ### 🚀 How to Run the Example
 
